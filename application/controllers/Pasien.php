@@ -35,6 +35,10 @@ class Pasien extends CI_Controller
     {
         //setelah data pasien di add data akan disave
         //dan akan masuk kedalam pasienModel fungsi insert
+        // $id = 00000;
+        // $idincrement = $id++;
+        // $idgenerate = "P" . $idincrement;
+        // $data['id_pasien'] = $idgenerate;
         $this->pasienModel->insertP($this->input->post());
         redirect('Pasien');
     }

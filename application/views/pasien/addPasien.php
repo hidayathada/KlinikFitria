@@ -2,8 +2,8 @@
     <div class="container mt-5">
         <div class="col-md-12">
             <div class="card mb-5">
-                <div class="card-header bg-info">
-                    Card Header
+            <div class="card-header bg-secondary">
+                    <h4 class="text-light">Tambah Pasien</h4>
                 </div>
                 <div class="card-body">
                     <div class="row">

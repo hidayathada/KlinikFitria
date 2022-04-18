@@ -69,11 +69,11 @@ body {
 <body>
 
 <div class="topnav" id="myTopnav">
-  <a href="#home" class="active"><i class="fa fa-plus mr-2">&nbsp;</i>Klinik Fitria</a>
-  <a href="#news" class="activegrey">Modul Pasien</a>
-  <a href="#news">News</a>
-  <a href="#contact">Contact</a>
-  <a href="#about">About</a>
+  <a href="#" class="active"><i class="fa fa-plus mr-2">&nbsp;</i>Klinik Fitria</a>
+  <a href="<?= base_url('pasien')?>" class="<?php if($this->uri->segment(1) == "Pasien"){echo "activegrey";}?>">Modul Pasien</a>
+  <a href="#news">Modul Obat</a>
+  <a href="#contact">Modul Rawat</a>
+  <a href="#about">Modul Tindakan</a>
   <a href="javascript:void(0);" class="icon" onclick="myFunction()">
     <i class="fa fa-bars"></i>
   </a>
