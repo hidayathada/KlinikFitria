@@ -10,7 +10,7 @@ class Klinik extends CI_Controller {
 
     public function index(){
         $this->load->view("template/head.php");
-        $this->load->view("template/navbar.php");
+        $this->load->view("template/topnav.php");
         $this->load->view("v_index.php");
     }
 
