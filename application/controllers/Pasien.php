@@ -16,40 +16,21 @@ class Pasien extends CI_Controller
         //Menampilkan isi tabel pasien didalam index
         $data['list'] = $this->pasienModel->get_daftar_pasien();
 
-        // $this->load->view('header');
-<<<<<<< HEAD
-        $this->load->view('pasien/pasienView', $data);
-        // $this->load->view('footer');
-=======
-        // $this->load->view('pasien/pasienView', $data);
-        // $this->load->view('footer');
-
         $this->load->view("template/head.php");
         $this->load->view("template/topnav.php");
         $this->load->view("pasien/pasienView.php", $data);
->>>>>>> faaf744c4a33ef6b0c8d13c77cfa3ad97b5b5c98
     }
     // memanggil tampilan addPasien
     public function addP()
     {
-<<<<<<< HEAD
-=======
         $this->load->view("template/head.php");
         $this->load->view("template/topnav.php");
->>>>>>> faaf744c4a33ef6b0c8d13c77cfa3ad97b5b5c98
         $this->load->view('pasien/addPasien');
     }
     public function savedataP()
     {
-        //setelah data pasien di add data akan disave
-        //dan akan masuk kedalam pasienModel fungsi insert
-<<<<<<< HEAD
-=======
-        // $id = 00000;
-        // $idincrement = $id++;
-        // $idgenerate = "P" . $idincrement;
-        // $data['id_pasien'] = $idgenerate;
->>>>>>> faaf744c4a33ef6b0c8d13c77cfa3ad97b5b5c98
+        // setelah data pasien di add data akan disave
+        // dan akan masuk kedalam pasienModel fungsi insert
         $this->pasienModel->insertP($this->input->post());
         redirect('Pasien');
     }
@@ -57,11 +38,8 @@ class Pasien extends CI_Controller
     public function editP($a)
     {
         $data['detail'] = $this->pasienModel->get_detail_pasien($a);
-<<<<<<< HEAD
-=======
         $this->load->view("template/head.php");
         $this->load->view("template/topnav.php");
->>>>>>> faaf744c4a33ef6b0c8d13c77cfa3ad97b5b5c98
         $this->load->view('pasien/editPasien', $data);
     }
     public function updateP($id)
@@ -82,26 +60,4 @@ class Pasien extends CI_Controller
         $this->pasienModel->deleteP($a);
         redirect('Pasien', 'refresh');
     }
-    // public function searchP()
-    // {
-    //     $keyword = $this->input->get('keyword');
-    //     $data = $this->pasienModel->ambil_data($keyword);
-    //     $data = array(
-    //         'keyword'    => $keyword,
-    //         'data'        => $data
-    //     );
-    //     // $this->load->view('header');
-    //     $this->load->view('searchView', $data);
-    //     // $this->load->view('footer');
-    // }
-    // public function get_pasien()
-    // {
-    //     $newid =  $this->pasienModel->get_idmax()->result();
-    //     if ($newid > 0) {
-    //         foreach ($newid as $key) {
-    //             $auto_id = $key->idpasien;
-    //         }
-    //     }
-    //     return $idpasien = $this->pasienModel->get_newid($auto_id, 'P');
-    // }
 }
