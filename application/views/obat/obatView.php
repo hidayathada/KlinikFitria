@@ -14,7 +14,8 @@
                             <tr>
                                 <th class="text-center">ID Obat</th>
                                 <th class="text-center">Nama Obat</th>
-                                <th class="text-center">Harga</th>
+                                <th class="text-center">Harga</th>]
+                                <th class="text-center">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
