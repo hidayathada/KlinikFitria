@@ -1,13 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<!-- Tampilan halaman utama -->
+<!-- Tampilan halaman Pasien -->
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pasien</title>
-</head>
+<title>Pasien</title>
+
 
 <body>
     <div class="container mt-5">
@@ -17,10 +11,12 @@
                     <h4 class="text-light">Modul Pasien</h4>
                 </div>
                 <div class="card-body">
-                    <a href="Obat/addO" class="btn btn-success mb-3 float-right">Tambah Pasien</a>
+                    <!-- Button Tambah pasien -->
+                    <a href="Pasien/addP" class="btn btn-success mb-3 float-right">Tambah Pasien</a>
                     <table class="table display nowrap table-bordered table-striped" style="width:100%" id="tableP">
                         <thead>
                             <tr>
+                                <!-- Nama table head pasien -->
                                 <th class="text-center">ID Pasien</th>
                                 <th class="text-center">Nama</th>
                                 <th class="text-center">Alamat</th>
@@ -34,12 +30,14 @@
                             foreach ($list as $item) : {
                             ?>
                                     <tr>
+                                        <!-- Isi table dari database -->
                                         <td><?php echo $item['idpasien'] ?></td>
                                         <td><?php echo $item['nama'] ?></td>
                                         <td><?php echo $item['alamat'] ?></td>
                                         <td><?php echo $item['tgllahir'] ?></td>
                                         <td><?php echo $item['notelp'] ?></td>
                                         <td class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                            <!-- Button Edit dan hapus pasien -->
                                             <a href="Pasien/editP/<?php echo $item['idpasien']; ?>" class="btn btn-warning">Edit</a>
                                             <a href="Pasien/deleteP/<?php echo $item['idpasien']; ?>" onclick="return confirm('Data ini akan dihapus. Anda yakin?')" class="btn btn-danger">Hapus</a>
                                         </td>
