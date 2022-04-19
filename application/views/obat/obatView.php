@@ -9,12 +9,14 @@
                 </div>
                 <div class="card-body">
                     <a href="Obat/addO" class="btn btn-success mb-3 float-right">Tambah Obat</a>
-                    <table class="table display nowrap table-bordered table-striped" style="width:100%"id="tableP">
+                    <table class="table display nowrap table-bordered table-striped" style="width:100%"id="table">
                         <thead>
                             <tr>
+                                <!-- <th class="text-center">No</th> -->
                                 <th class="text-center">ID Obat</th>
                                 <th class="text-center">Nama Obat</th>
                                 <th class="text-center">Harga</th>
+                                <th class="text-center">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -40,11 +42,38 @@
     </div>
 </body>
 <!-- <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script> -->
+<script src="<?php echo base_url('assets/jquery/jquery.min.js')?>"></script>
+<script src="<?php echo base_url('assets/bootstrap/js/bootstrap.min.js')?>"></script>
+<script src="<?php echo base_url('assets/jquery/DataTables/datatables.js')?>"></script>
+<!-- <script src="<?php echo base_url('assets/jquery/DataTables/DataTables-1.11.5/js/dataTables.bootstrap.min.js')?>"></script> -->
+ 
 <script>
-    $(document).ready( function () {
-    $('#tableP').DataTable();
-} );
-$('#tableP').DataTable( {
-    "scrollX": true
-} );
+  var table;
+ 
+ $(document).ready(function() {
+  
+     //datatables
+     table = $('#table').DataTable({ 
+  
+         "processing": true, //Feature control the processing indicator.
+         "serverSide": true, //Feature control DataTables' server-side processing mode.
+         "order": [], //Initial no order.
+  
+         // Load data for the table's content from an Ajax source
+         "ajax": {
+             "url": "<?php echo base_url('Obat/ajax_list')?>",
+             "type": "POST"
+         },
+  
+         //Set column definition initialisation properties.
+         "columnDefs": [
+         { 
+            //  "targets": [ 0 ], //first column / numbering column
+             "orderable": false, //set not orderable
+         },
+         ],
+  
+     });
+  
+ });
 </script>
