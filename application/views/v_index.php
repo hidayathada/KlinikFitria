@@ -6,7 +6,24 @@
                     Card Header
                 </div>
                 <div class="card-body">
-                    Your Code Here.....
+                    <table>
+                        <thead>
+                            <tr>
+                                <td>ID Dokter</td>
+                                <td>Nama Dokter</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            <select>
+                                <?php foreach($datalist as $i):?>
+                                    <option>
+                                        <?= $i->namadokter;?>
+                                    </option>
+                                    <?php endforeach?>
+                                </select>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
