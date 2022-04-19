@@ -17,10 +17,6 @@ class Tindakan extends CI_Controller
         //Menampilkan isi tabel obat didalam index
         $data['list'] = $this->tindakanModel->get_daftar_tindakan();
 
-        // $this->load->view('header');
-        // $this->load->view('pasien/pasienView', $data);
-        // $this->load->view('footer');
-
         $this->load->view("template/head.php");
         $this->load->view("template/topnav.php");
         $this->load->view("tindakan/tindakanView.php", $data);
@@ -34,12 +30,7 @@ class Tindakan extends CI_Controller
     }
     public function savedataT()
     {
-        //setelah data pasien di add data akan disave
-        //dan akan masuk kedalam pasienModel fungsi insert
-        // $id = 00000;
-        // $idincrement = $id++;
-        // $idgenerate = "P" . $idincrement;
-        // $data['id_pasien'] = $idgenerate;
+
         $this->tindakanModel->insertT($this->input->post());
         redirect('Tindakan');
     }
