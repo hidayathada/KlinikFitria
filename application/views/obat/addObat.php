@@ -1,8 +1,10 @@
+<title>Tambah Obat</title>
+
 <body>
     <div class="container mt-5">
         <div class="col-md-12">
             <div class="card mb-5">
-            <div class="card-header bg-secondary">
+                <div class="card-header bg-secondary">
                     <h4 class="text-light">Tambah Obat </h4>
                 </div>
                 <div class="card-body">
