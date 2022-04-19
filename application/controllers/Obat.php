@@ -17,10 +17,6 @@ class Obat extends CI_Controller
         //Menampilkan isi tabel obat didalam index
         $data['list'] = $this->obatModel->get_daftar_obat();
 
-        // $this->load->view('header');
-        // $this->load->view('pasien/pasienView', $data);
-        // $this->load->view('footer');
-
         $this->load->view("template/head.php");
         $this->load->view("template/topnav.php");
         $this->load->view("obat/obatView.php", $data);
@@ -34,12 +30,7 @@ class Obat extends CI_Controller
     }
     public function savedataO()
     {
-        //setelah data pasien di add data akan disave
-        //dan akan masuk kedalam pasienModel fungsi insert
-        // $id = 00000;
-        // $idincrement = $id++;
-        // $idgenerate = "P" . $idincrement;
-        // $data['id_pasien'] = $idgenerate;
+
         $this->obatModel->insertO($this->input->post());
         redirect('Obat');
     }
@@ -69,7 +60,7 @@ class Obat extends CI_Controller
         $this->obatModel->deleteO($a);
         redirect('Obat', 'refresh');
     }
-    
+
     public function ajax_list()
     {
         $list = $this->M_ajax->get_datatables();
@@ -86,17 +77,17 @@ class Obat extends CI_Controller
             <a href='Obat/editO/$obat->idobat' class='btn btn-warning mr-2'>Edit</a>
             <a href='Obat/deleteO/$obat->idobat' onclick='return confirm('Data ini akan dihapus. Anda yakin?')' class='btn btn-danger'>Hapus</a>
             </center>";
- 
+
             $data[] = $row;
         }
- 
+
         $output = array(
-                        "draw" => $_POST['draw'],
-                        "recordsTotal" => $this->M_ajax->count_all(),
-                        // "recordsTotal" => 4,
-                        "recordsFiltered" => $this->M_ajax->count_filtered(),
-                        "data" => $data,
-                );
+            "draw" => $_POST['draw'],
+            "recordsTotal" => $this->M_ajax->count_all(),
+            // "recordsTotal" => 4,
+            "recordsFiltered" => $this->M_ajax->count_filtered(),
+            "data" => $data,
+        );
         //output to json format
         echo json_encode($output);
     }
