@@ -22,7 +22,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="harga" class="form-label">Harga</label>
-                                    <textarea type="text" name="harga" class="form-control" id="harga"><?php echo $detail['harga'] ?></textarea>
+                                    <input type="text" name="harga" class="form-control" id="harga" value="<?php echo $detail['harga'] ?>">
                                 </div>
 
                                 <button type="submit" class="btn btn-primary">Submit</button>

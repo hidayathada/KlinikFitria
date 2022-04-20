@@ -22,7 +22,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="harga" class="form-label">Harga </label>
-                                    <textarea type="text" name="harga" class="form-control" id="harga"></textarea>
+                                    <input type="text" name="harga" class="form-control" id="harga">
                                 </div>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                                 <button type="button" class="btn btn-danger" onclick="history.back();">Kembali</button>
