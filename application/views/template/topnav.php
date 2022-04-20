@@ -78,7 +78,7 @@
 <body>
 
   <div class="topnav" id="myTopnav">
-    <a href="#" class="active"><i class="fa fa-plus mr-2">&nbsp;</i>Klinik Fitria</a>
+    <a href="<?= base_url()?>" class="active"><i class="fa fa-plus mr-2">&nbsp;</i>Klinik Fitria</a>
     <a href="<?= base_url('pasien') ?>" class="<?php if ($this->uri->segment(1) == "pasien") {
                                                   echo "activegrey";
                                                 } ?>">Modul Pasien</a>

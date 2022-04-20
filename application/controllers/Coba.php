@@ -6,12 +6,24 @@ class Coba extends CI_Controller {
     public function __construct() { 
         parent::__construct();
         $this->load->model('M_ajax');
+        // $this->load->library('Curl');
     }
  
     public function index()
     {
-        $this->load->helper('url');
-        $this->load->view('v_coba.php');
+        // $this->load->helper('url');
+        $url = 'http://rosihanari.net/api/api.php?get=dokter';
+        $get_url = file_get_contents($url);
+        $data = json_decode($get_url);
+        // print_r($data);
+        $data_array = array(
+            'datalist' => $data
+        );
+        $this->load->view('v_index.php',$data_array);
+    }
+
+    public function curl(){
+        $this->load->library('Curl');
     }
  
     public function ajax_list()
