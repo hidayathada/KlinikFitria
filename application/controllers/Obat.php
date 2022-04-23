@@ -61,34 +61,34 @@ class Obat extends CI_Controller
         redirect('Obat', 'refresh');
     }
 
-    public function ajax_list()
-    {
-        $list = $this->M_ajax->get_datatables();
-        $data = array();
-        // $no = $_POST['start'];
-        // $no = 0;
-        foreach ($list as $obat) {
-            $row = array();
-            $row[] = $obat->idobat;
-            $row[] = $obat->nama;
-            $row[] = $obat->harga;
-            $row[] = "
-                <center>
-            <a href='Obat/editO/$obat->idobat' class='btn btn-warning mr-2'>Edit</a>
-            <a href='Obat/deleteO/$obat->idobat' onclick='return confirm('Data ini akan dihapus. Anda yakin?')' class='btn btn-danger'>Hapus</a>
-            </center>";
+    // public function ajax_list()
+    // {
+    //     $list = $this->M_ajax->get_datatables();
+    //     $data = array();
+    //     // $no = $_POST['start'];
+    //     // $no = 0;
+    //     foreach ($list as $obat) {
+    //         $row = array();
+    //         $row[] = $obat->idobat;
+    //         $row[] = $obat->nama;
+    //         $row[] = $obat->harga;
+    //         $row[] = "
+    //             <center>
+    //         <a href='Obat/editO/$obat->idobat' class='btn btn-warning mr-2'>Edit</a>
+    //         <a href='Obat/deleteO/$obat->idobat' onclick='return confirm('Data ini akan dihapus. Anda yakin?')' class='btn btn-danger'>Hapus</a>
+    //         </center>";
 
-            $data[] = $row;
-        }
+    //         $data[] = $row;
+    //     }
 
-        $output = array(
-            "draw" => $_POST['draw'],
-            "recordsTotal" => $this->M_ajax->count_all(),
-            // "recordsTotal" => 4,
-            "recordsFiltered" => $this->M_ajax->count_filtered(),
-            "data" => $data,
-        );
-        //output to json format
-        echo json_encode($output);
-    }
+    //     $output = array(
+    //         "draw" => $_POST['draw'],
+    //         "recordsTotal" => $this->M_ajax->count_all(),
+    //         // "recordsTotal" => 4,
+    //         "recordsFiltered" => $this->M_ajax->count_filtered(),
+    //         "data" => $data,
+    //     );
+    //     //output to json format
+    //     echo json_encode($output);
+    // }
 }

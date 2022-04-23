@@ -116,7 +116,6 @@
               <tr>
                 <th class="text-center">ID Rawat</th>
                 <th class="text-center">Nama Pasien</th>
-                <th class="text-center">Dokter</th>
                 <th class="text-center">Tanggal Rawat</th>
                 <th class="text-center">Total Tindakan</th>
                 <th class="text-center">Total Obat</th>
@@ -124,12 +123,11 @@
                 <th class="text-center">Action</th>
               </tr>
             </thead>
-            <tbody id="Dokter">
+            <tbody>
               <?php foreach ($rawat as $i) : ?>
                 <tr align="center">
                   <td><?= $i->idrawat ?></td>
                   <td><?= $i->nama ?></td>
-                  <td><?= $i->dokter ?></td>
                   <td><?= $i->tglrawat ?></td>
                   <td><?= $i->totaltindakan ?></td>
                   <td><?= $i->totalobat ?></td>
