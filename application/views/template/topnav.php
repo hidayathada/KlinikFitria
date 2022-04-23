@@ -73,6 +73,8 @@
       }
     }
   </style>
+    <link href="<?= base_url() ?>assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
 </head>
 
 <body>
@@ -85,15 +87,32 @@
     <a href="<?= base_url('obat') ?>" class="<?php if ($this->uri->segment(1) == "obat") {
                                                 echo "activegrey";
                                               } ?>">Modul Obat</a>
-    <a href="<?= base_url('rawat') ?>" class="<?php if ($this->uri->segment(1) == "rawat") {
-                                                echo "activegrey";
-                                              } ?>">Modul Rawat</a>
-    <a href="<?= base_url('tindakan') ?>" class="<?php if ($this->uri->segment(1) == "tindakan") {
-                                                    echo "activegrey";
-                                                  } ?>">Modul Tindakan</a>
+      <a href="<?= base_url('tindakan') ?>" class="<?php if ($this->uri->segment(1) == "tindakan") {
+                                                      echo "activegrey";
+                                                    } ?>">Modul Tindakan</a>
+      <a href="<?= base_url('rawat') ?>" class="<?php if ($this->uri->segment(1) == "tindakan") {
+                                                      echo "activegrey";
+                                                    } ?>">Modul Rawat</a>
+      <a href="<?= base_url('rawat/rawattindakan') ?>" class="<?php if ($this->uri->segment(1) == "tindakan") {
+                                                      echo "activegrey";
+                                                    } ?>">Modul RawatTindakan</a>
+      <a href="<?= base_url('rawat/rawatobat') ?>" class="<?php if ($this->uri->segment(1) == "tindakan") {
+                                                      echo "activegrey";
+                                                    } ?>">Modul RawatObat</a>
+    <!-- <div class="dropdown">
+      <a class="btn btn-secondary dropdown-toggle" type="button" id="buttonrawat" data-bs-toggle="dropdown" aria-expanded="false">
+        Dropdown button
+      </a>
+      <ul class="dropdown-menu" aria-labelledby="buttonrawat">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+      </ul>
+    </div>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
       <i class="fa fa-bars"></i>
     </a>
+  </div> -->
   </div>
 
 

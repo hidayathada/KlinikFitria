@@ -10,7 +10,7 @@
     <div class="col-12">
       <div class="card">
         <div class="card-header bg-secondary">
-          <h4 class="text-light">Modul Rawat</h4>
+          <h4 class="text-light">Modul Pasien</h4>
         </div>
         <div class="card-body">
           <!-- <a href="Pasien/addP" class="btn btn-success mb-3 float-right">Tambah Pasien</a> -->
@@ -23,11 +23,11 @@
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h4 class="modal-title">Tambah Data Rawat</h4>
+                  <h4 class="modal-title">Tambah Data Rawat Tindakan</h4>
                 </div>
                 <div class="modal-body">
                   <!-- FORM TAMBAH -->
-                  <form method="post" action="<?php echo base_url() ?>rawat/addRawat">
+                  <form method="post" action="<?php echo base_url() ?>rawat/addRawatTindakan">
                     <!-- <input type="hidden" name="id" id="id" value=> -->
 
                     <div class="row">
@@ -97,7 +97,7 @@
                           <label>Nama Pasien</label>
                           <select name="pasien" class="form-control">
                             <?php foreach($pasien as $i):?>
-                              <option value="<?= $i->idrawat?>"><?= $i->nama?></option>
+                              <option value="<?= $i->idpasien?>"><?= $i->nama?></option>
                               <?php endforeach?>
                           </select>
                         </div>
@@ -120,24 +120,24 @@
           <table class="table nowrap table-bordered table-striped" style="width:100%" id="tabeldokter">
             <thead>
               <tr>
-                <th class="text-center">ID Rawat</th>
+                <!-- <th class="text-center">ID Rawat</th> -->
                 <th class="text-center">Tanggal Rawat</th>
+                <th class="text-center">Nama Tindakan</th>
                 <th class="text-center">Total Tindakan</th>
-                <th class="text-center">Total Obat</th>
-                <th class="text-center">Total Harga</th>
-                <th class="text-center">Nama Pasien</th>
+                <th class="text-center">Nama Dokter</th>
+                <th class="text-center">Harga</th>
                 <th class="text-center">Action</th>
               </tr>
             </thead>
             <tbody>
-              <?php foreach ($rawat as $i) : ?>
+              <?php foreach ($rawattindakan as $i) : ?>
                 <tr align="center">
-                  <td><?= $i->idrawat ?></td>
+                  <!-- <td><?= $i->idrawat ?></td> -->
                   <td><?= $i->tglrawat ?></td>
-                  <td><?= $i->totaltindakan ?></td>
-                  <td><?= $i->totalobat ?></td>
-                  <td><?= $i->totalharga ?></td>
-                  <td><?= $i->nama ?></td>
+                  <td><?= $i->namatindakan ?></td>
+                  <td><?= $i->totaltindakan?></td>
+                  <td><?= $i->namadokter?></td>
+                  <td><?= $i->harga?></td>
                   <td>
 
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#detailRawat<?= $i->idrawat ?>">

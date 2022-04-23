@@ -10,7 +10,7 @@ class Obat extends CI_Controller
         parent::__construct();
         $this->load->helper(array('text', 'url'));
         $this->load->model('obatModel');
-        $this->load->model('M_ajax');
+        $this->load->model('obatModel');
     }
     public function index()
     {

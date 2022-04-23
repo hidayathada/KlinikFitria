@@ -10,7 +10,7 @@
 						<h4 class="text-light">Modul Rawat Obat</h4>
 					</div>
 					<div class="card-body">
-						<a href="Obat/addO" class="btn btn-success mb-3 float-right">Tambah Rawat Obat</a>
+						<a href="RawatObat/AddRawatObat" class="btn btn-success mb-3 float-right">Tambah Rawat Obat</a>
 						<table class="table display nowrap table-bordered table-striped" style="width:100%" id="tableP">
 							<thead>
 								<!-- Table Head -->
