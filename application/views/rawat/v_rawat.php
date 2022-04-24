@@ -34,67 +34,30 @@
                       <div class="col-sm-12">
                         <!-- text input -->
                         <div class="form-group">
+                          <label>Nama Pasien</label>
+                          <select name="pasien" class="form-control">
+                            <?php foreach($pasien as $i):?>
+                              <option value="<?= $i->idpasien?>"><?= $i->nama?></option>
+                              <?php endforeach?>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <!-- text input -->
+                        <div class="form-group">
                           <label>Tanggal Rawat</label>
                           <input type="date" class="form-control" name="tgl_rawat">
                         </div>
                       </div>
                     </div>
 
-                    <div class="row">
+                    <!-- <div class="row">
                       <div class="col-sm-12">
-                        <!-- text input -->
                         <div class="form-group">
                           <label>Total Tindakan</label>
-                          <input type="text" class="form-control" name="totaltindakan" placeholder="Total Tindakan">
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="row">
-                      <div class="col-sm-12">
-                        <!-- text input -->
-                        <div class="form-group">
-                          <label>Total Obat</label>
-                          <input type="text" class="form-control" name="totalobat" placeholder="Total Obat">
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="row">
-                      <div class="col-sm-12">
-                        <!-- text input -->
-                        <div class="form-group">
-                          <label>Total Harga</label>
-                          <input type="text" class="form-control" name="totalharga" placeholder="Total Harga">
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="row">
-                      <div class="col-sm-12">
-                        <!-- text input -->
-                        <div class="form-group">
-                          <label>Uang Muka</label>
-                          <input type="number" class="form-control" name="uangmuka" placeholder="Uang Muka">
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div class="row">
-                      <div class="col-sm-12">
-                        <!-- text input -->
-                        <div class="form-group">
-                          <label>Kurang</label>
-                          <input type="number" class="form-control" name="kurang" placeholder="Kurang">
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div class="row">
-                      <div class="col-sm-12">
-                        <!-- text input -->
-                        <div class="form-group">
-                          <label>Nama Pasien</label>
                           <select name="pasien" class="form-control">
                             <?php foreach($pasien as $i):?>
                               <option value="<?= $i->idrawat?>"><?= $i->nama?></option>
@@ -102,7 +65,57 @@
                           </select>
                         </div>
                       </div>
+                    </div> -->
+                    
+                    <!-- <div class="row">
+                      <div class="col-sm-12">
+                        <div class="form-group">
+                          <label>Total Tindakan</label>
+                          <select name="pasien" class="form-control">
+                            <?php foreach($pasien as $i):?>
+                              <option value="<?= $i->idrawat?>"><?= $i->nama?></option>
+                              <?php endforeach?>
+                          </select>
+                        </div>
+                      </div>
+                    </div> -->
+
+                    <!-- <div class="row">
+                      <div class="col-sm-12">
+                        <div class="form-group">
+                          <label>Total Obat</label>
+                          <input type="text" class="form-control" name="totalobat" placeholder="Total Obat">
+                        </div>
+                      </div>
+                    </div> -->
+
+                    <!-- <div class="row">
+                      <div class="col-sm-12">
+                        <div class="form-group">
+                          <label>Total Harga</label>
+                          <input type="text" class="form-control" name="totalharga" placeholder="Total Harga">
+                        </div>
+                      </div>
+                    </div> -->
+
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <div class="form-group">
+                          <label>Uang Muka</label>
+                          <input type="number" class="form-control" name="uangmuka" placeholder="Uang Muka">
+                        </div>
+                      </div>
                     </div>
+                    
+                    <!-- <div class="row">
+                      <div class="col-sm-12">
+                        <div class="form-group">
+                          <label>Kurang</label>
+                          <input type="number" class="form-control" name="kurang" placeholder="Kurang">
+                        </div>
+                      </div>
+                    </div> -->
+                    
 
                     <div class="modal-footer justify-content-between">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -120,29 +133,69 @@
           <table class="table nowrap table-bordered table-striped" style="width:100%" id="tabeldokter">
             <thead>
               <tr>
-                <th class="text-center">ID Rawat</th>
+                <th class="text-center">Nama Pasien</th>
                 <th class="text-center">Tanggal Rawat</th>
                 <th class="text-center">Total Tindakan</th>
                 <th class="text-center">Total Obat</th>
                 <th class="text-center">Total Harga</th>
-                <th class="text-center">Nama Pasien</th>
+                <th class="text-center">Uang Muka</th>
+                <th class="text-center">Kurang</th>
                 <th class="text-center">Action</th>
               </tr>
             </thead>
             <tbody>
               <?php foreach ($rawat as $i) : ?>
                 <tr align="center">
-                  <td><?= $i->idrawat ?></td>
+                  <td><?= $i->nama ?></td>
                   <td><?= $i->tglrawat ?></td>
                   <td><?= $i->totaltindakan ?></td>
                   <td><?= $i->totalobat ?></td>
                   <td><?= $i->totalharga ?></td>
-                  <td><?= $i->nama ?></td>
+                  <td><?= $i->uangmuka ?></td>
+                  <td><?= $i->kurang ?></td>
                   <td>
 
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#detailRawat<?= $i->idrawat ?>">
-                      Detail
+                  <?php if($i->uangmuka == 0){?>
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#uangmuka<?= $i->idrawat ?>">
+                      Input Uang Muka
                     </button>
+                    <div class="modal fade" id="uangmuka<?= $i->idrawat ?>">
+                    <div class="modal-dialog modal-sm">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h4 class="modal-title">Input Uang Muka Pasien</h4>
+                        </div>
+                        <div class="modal-body">
+                        <form method="post" action="<?php echo base_url() ?>rawat/inpUtuangMuka">
+                      <input type="hidden" name="idrawat" value="<?= $i->idrawat?>">
+                      <input type="hidden" name="totaltindakan" value="<?= $i->totaltindakan?>">
+                      <input type="hidden" name="totalobat" value="<?= $i->totalobat?>">
+
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <!-- text input -->
+                        <div class="form-group">
+                          <label>Uang Muka</label>
+                          <input type="text" class="form-control" name="uangmuka" placeholder="Uang Muka" value="<?= $i->uangmuka?>">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="modal-footer justify-content-between">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="submit" class="btn btn-success">Tambah</button>
+                    </div>
+                  </form>
+                  <!-- /FORM TAMBAH -->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- end div modal-->
+                  <?php }else{?>
+                    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#detailRawat<?= $i->idrawat ?>">
+                      Detail
+                    </button> -->
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editRawat<?= $i->idrawat ?>">
                       Edit
                     </button>
@@ -259,6 +312,7 @@
                     </div>
                   </div>
                   <!-- end div modal-->
+                  <?php }?>
                 </tr>
               <?php endforeach ?>
             </tbody>

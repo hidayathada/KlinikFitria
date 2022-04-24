@@ -29,6 +29,21 @@
                   <!-- FORM TAMBAH -->
                   <form method="post" action="<?php echo base_url() ?>rawat/addRawatObat">
                     <!-- <input type="hidden" name="id" id="id" value=> -->
+
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <!-- text input -->
+                        <div class="form-group">
+                          <label>Nama Pasien</label>
+                          <select name="idrawat" class="form-control">
+                            <?php foreach($rawat as $i):?>
+                              <option value="<?= $i->idrawat?>"><?= "ID Rawat : " . $i->idrawat . " " . "Nama Pasien : " . $i->nama?></option>
+                              <?php endforeach?>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+
                     <div class="row">
                       <div class="col-sm-12">
                         <!-- text input -->
@@ -110,6 +125,21 @@
                   <!-- FORM TAMBAH -->
                   <form method="post" action="<?php echo base_url() ?>rawat/editRawatObat">
                     <input type="hidden" name="idrawatobat" value="<?= $i->idrawatobat?>">
+
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <!-- text input -->
+                        <div class="form-group">
+                          <label>Nama Pasien</label>
+                          <select name="idrawat" class="form-control" readonly>
+                            <?php foreach($rawat as $j):?>
+                              <option value="<?= $j->idrawat?>"><?= "ID Rawat : " . $j->idrawat . " " . "Nama Pasien : " . $j->nama?></option>
+                              <?php endforeach?>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    
                     <div class="row">
                       <div class="col-sm-12">
                         <!-- text input -->

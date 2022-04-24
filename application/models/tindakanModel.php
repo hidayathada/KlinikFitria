@@ -20,7 +20,6 @@ class tindakanModel extends CI_Model
     function insertT($a) //membuat fungsi insert untuk input data
     {
         $data = [  //variabel data yang berisi input id,nama,alamat,tgl lahir,telepon
-            'idtindakan' => $a['idtindakan'],
             'namatindakan' => $a['namatindakan'],
             'biaya' => $a['biaya'],
         ];
@@ -29,7 +28,6 @@ class tindakanModel extends CI_Model
     function updateT($a, $id) //membuat fungsi update untuk update data pasien
     {
         $data = [
-            'idtindakan' => $a['idtindakan'],
             'namatindakan' => $a['namatindakan'],
             'biaya' => $a['biaya'],
         ];

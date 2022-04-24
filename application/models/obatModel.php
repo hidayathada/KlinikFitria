@@ -20,7 +20,6 @@ class obatModel extends CI_Model
     function insertO($a) //membuat fungsi insert untuk input data
     {
         $data = [  //variabel data yang berisi input id,nama,alamat,tgl lahir,telepon
-            'idobat' => $a['idobat'],
             'nama' => $a['nama'],
             'harga' => $a['harga']
         ];
@@ -29,7 +28,6 @@ class obatModel extends CI_Model
     function updateO($a, $id) //membuat fungsi update untuk update data pasien
     {
         $data = [
-            'idobat' => $a['idobat'],
             'nama' => $a['nama'],
             'harga' => $a['harga']
         ];

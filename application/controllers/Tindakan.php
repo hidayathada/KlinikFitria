@@ -10,7 +10,7 @@ class Tindakan extends CI_Controller
         parent::__construct();
         $this->load->helper(array('text', 'url'));
         $this->load->model('tindakanModel');
-        $this->load->model('M_ajax');
+        // $this->load->model('M_ajax');
     }
     public function index()
     {

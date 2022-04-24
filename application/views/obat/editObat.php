@@ -13,10 +13,6 @@
                             <!-- Button Submit akan mengarah kesavedataP -->
                             <form action="<?php echo base_url('Obat/updateO/') . $detail['idobat'] ?>" method="post" enctype="multipart/form-data">
                                 <div class="mb-3">
-                                    <label for="idobat" class="form-label">ID Obat</label>
-                                    <input type="text" name="idobat" class="form-control" id="idobat" value="<?php echo $detail['idobat'] ?>">
-                                </div>
-                                <div class="mb-3">
                                     <label for="nama" class="form-label">Nama Obat</label>
                                     <input type="text" name="nama" class="form-control" id="nama" value="<?php echo $detail['nama'] ?>">
                                 </div>

@@ -10,7 +10,7 @@
     <div class="col-12">
       <div class="card">
         <div class="card-header bg-secondary">
-          <h4 class="text-light">Modul Pasien</h4>
+          <h4 class="text-light">Modul Rawat Tindakan</h4>
         </div>
         <div class="card-body">
           <!-- <a href="Pasien/addP" class="btn btn-success mb-3 float-right">Tambah Pasien</a> -->
@@ -29,75 +29,54 @@
                   <!-- FORM TAMBAH -->
                   <form method="post" action="<?php echo base_url() ?>rawat/addRawatTindakan">
                     <!-- <input type="hidden" name="id" id="id" value=> -->
-
-                    <div class="row">
-                      <div class="col-sm-12">
-                        <!-- text input -->
-                        <div class="form-group">
-                          <label>Tanggal Rawat</label>
-                          <input type="date" class="form-control" name="tgl_rawat">
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="row">
-                      <div class="col-sm-12">
-                        <!-- text input -->
-                        <div class="form-group">
-                          <label>Total Tindakan</label>
-                          <input type="text" class="form-control" name="totaltindakan" placeholder="Total Tindakan">
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="row">
-                      <div class="col-sm-12">
-                        <!-- text input -->
-                        <div class="form-group">
-                          <label>Total Obat</label>
-                          <input type="text" class="form-control" name="totalobat" placeholder="Total Obat">
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="row">
-                      <div class="col-sm-12">
-                        <!-- text input -->
-                        <div class="form-group">
-                          <label>Total Harga</label>
-                          <input type="text" class="form-control" name="totalharga" placeholder="Total Harga">
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="row">
-                      <div class="col-sm-12">
-                        <!-- text input -->
-                        <div class="form-group">
-                          <label>Uang Muka</label>
-                          <input type="number" class="form-control" name="uangmuka" placeholder="Uang Muka">
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div class="row">
-                      <div class="col-sm-12">
-                        <!-- text input -->
-                        <div class="form-group">
-                          <label>Kurang</label>
-                          <input type="number" class="form-control" name="kurang" placeholder="Kurang">
-                        </div>
-                      </div>
-                    </div>
                     
                     <div class="row">
                       <div class="col-sm-12">
                         <!-- text input -->
                         <div class="form-group">
                           <label>Nama Pasien</label>
-                          <select name="pasien" class="form-control">
-                            <?php foreach($pasien as $i):?>
-                              <option value="<?= $i->idpasien?>"><?= $i->nama?></option>
+                          <select name="idrawat" class="form-control">
+                            <?php foreach($rawat as $i):?>
+                              <option value="<?= $i->idrawat?>"><?= "ID Rawat : " . $i->idrawat . " " . "Nama Pasien : " . $i->nama?></option>
+                              <?php endforeach?>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <!-- text input -->
+                        <div class="form-group">
+                          <label>Nama Tindakan</label>
+                          <select name="tindakan" class="form-control">
+                            <?php foreach($tindakan as $i):?>
+                              <option value="<?= $i->idtindakan?>"><?= $i->namatindakan?></option>
+                              <?php endforeach?>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <!-- text input -->
+                        <div class="form-group">
+                          <label>Jumlah Tindakan</label>
+                          <input type="text" class="form-control" name="jumlah">
+                          </select>
+                        </div>
+                      </div>
+                  </div>
+
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <!-- text input -->
+                        <div class="form-group">
+                          <label>Nama Dokter</label>
+                          <select name="dokter" class="form-control">
+                            <?php foreach($dokter as $i):?>
+                              <option><?= $i->namadokter?></option>
                               <?php endforeach?>
                           </select>
                         </div>
@@ -121,127 +100,92 @@
             <thead>
               <tr>
                 <!-- <th class="text-center">ID Rawat</th> -->
-                <th class="text-center">Tanggal Rawat</th>
+                <th class="text-center">No</th>
+                <th class="text-center">ID Rawat Tindakan</th>
                 <th class="text-center">Nama Tindakan</th>
-                <th class="text-center">Total Tindakan</th>
                 <th class="text-center">Nama Dokter</th>
-                <th class="text-center">Harga</th>
+                <th class="text-center">Total Tindakan</th>
                 <th class="text-center">Action</th>
               </tr>
             </thead>
             <tbody>
+              <?php $no=1;?>
               <?php foreach ($rawattindakan as $i) : ?>
                 <tr align="center">
-                  <!-- <td><?= $i->idrawat ?></td> -->
-                  <td><?= $i->tglrawat ?></td>
+                  <td><?= $no++?></td>
+                  <td><?= $i->idrawattindakan?></td>
                   <td><?= $i->namatindakan ?></td>
-                  <td><?= $i->totaltindakan?></td>
                   <td><?= $i->namadokter?></td>
                   <td><?= $i->harga?></td>
                   <td>
 
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#detailRawat<?= $i->idrawat ?>">
+                    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#detailRawat<?= $i->idrawat ?>">
                       Detail
-                    </button>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editRawat<?= $i->idrawat ?>">
+                    </button> -->
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editRawatTindakan<?= $i->idrawattindakan ?>">
                       Edit
                     </button>
-                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteRawat<?= $i->idrawat ?>">
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteRawatTindakan<?= $i->idrawattindakan ?>">
                       Hapus
                     </button>
                   </td>
-                  <div class="modal fade" id="deleteRawat<?= $i->idrawat ?>">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h4 class="modal-title">Delete Data Rawat</h4>
-                          <form method="post" action="<?php echo base_url() ?>rawat/deleteRawat">
-                          <div class="modal-footer justify-content-between">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="modal fade" id="editRawat<?= $i->idrawat ?>">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h4 class="modal-title">Edit Data Rawat</h4>
-                        </div>
-                        <div class="modal-body">
-                        <form method="post" action="<?php echo base_url() ?>rawat/editRawat">
-                    <input type="hidden" name="idrawat" value="<?= $i->idrawat?>">
-
-                    <div class="row">
-                      <div class="col-sm-12">
-                        <!-- text input -->
-                        <div class="form-group">
-                          <label>Tanggal Rawat</label>
-                          <input type="date" class="form-control" name="tgl_rawat" value="<?= $i->tglrawat?>">
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="row">
-                      <div class="col-sm-12">
-                        <!-- text input -->
-                        <div class="form-group">
-                          <label>Total Tindakan</label>
-                          <input type="text" class="form-control" name="totaltindakan" placeholder="Total Tindakan" value="<?= $i->totaltindakan?>">
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="row">
-                      <div class="col-sm-12">
-                        <!-- text input -->
-                        <div class="form-group">
-                          <label>Total Obat</label>
-                          <input type="text" class="form-control" name="totalobat" placeholder="Total Obat" value="<?= $i->totalobat?>">
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="row">
-                      <div class="col-sm-12">
-                        <!-- text input -->
-                        <div class="form-group">
-                          <label>Total Harga</label>
-                          <input type="text" class="form-control" name="totalharga" placeholder="Total Harga" value="<?= $i->totalharga?>">
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="row">
-                      <div class="col-sm-12">
-                        <!-- text input -->
-                        <div class="form-group">
-                          <label>Uang Muka</label>
-                          <input type="number" class="form-control" name="uangmuka" placeholder="Uang Muka" value="<?= $i->uangmuka?>">
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div class="row">
-                      <div class="col-sm-12">
-                        <!-- text input -->
-                        <div class="form-group">
-                          <label>Kurang</label>
-                          <input type="number" class="form-control" name="kurang" placeholder="Kurang" value="<?= $i->kurang?>">
-                        </div>
-                      </div>
-                    </div>
+            <div class="modal fade" id="editRawatTindakan<?= $i->idrawattindakan ?>">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title">Edit Data Rawat Tindakan</h4>
+                </div>
+                <div class="modal-body">
+                <form method="post" action="<?php echo base_url() ?>rawat/editRawatTindakan">
+                    <input type="hidden" name="idrawattindakan" value="<?= $i->idrawattindakan?>">
                     
                     <div class="row">
                       <div class="col-sm-12">
                         <!-- text input -->
                         <div class="form-group">
                           <label>Nama Pasien</label>
-                          <select name="pasien" class="form-control">
-                            <?php foreach($pasien as $i):?>
-                              <option value="<?= $i->idpasien?>"><?= $i->nama?></option>
+                          <select name="idrawat" class="form-control" readonly>
+                            <?php foreach($rawat as $j):?>
+                              <option value="<?= $j->idrawat?>"><?= "ID Rawat : " . $j->idrawat . " " . "Nama Pasien : " . $j->nama?></option>
+                              <?php endforeach?>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <!-- text input -->
+                        <div class="form-group">
+                          <label>Nama Tindakan</label>
+                          <select name="tindakan" class="form-control">
+                            <?php foreach($tindakan as $k):?>
+                              <option value="<?= $k->idtindakan?>"><?= $k->namatindakan?></option>
+                              <?php endforeach?>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <!-- text input -->
+                        <div class="form-group">
+                          <label>Jumlah Tindakan</label>
+                          <input type="text" class="form-control" name="jumlah" value="<?= $i->jumlah?>">
+                          </select>
+                        </div>
+                      </div>
+                  </div>
+
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <!-- text input -->
+                        <div class="form-group">
+                          <label>Nama Dokter</label>
+                          <select name="dokter" class="form-control">
+                            <?php foreach($dokter as $l):?>
+                              <option><?= $l->namadokter?></option>
                               <?php endforeach?>
                           </select>
                         </div>
@@ -254,11 +198,25 @@
                     </div>
                   </form>
                   <!-- /FORM TAMBAH -->
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- end div modal-->
+          <div class="modal fade" id="deleteRawatTindakan<?= $i->idrawattindakan ?>">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h4 class="modal-title">Delete Data Rawat Tindakan</h4>
+                          <form method="post" action="<?php echo base_url() ?>rawat/deleteRawatTindakan">
+                          <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <!-- end div modal-->
                 </tr>
               <?php endforeach ?>
             </tbody>

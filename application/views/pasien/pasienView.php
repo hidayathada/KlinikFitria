@@ -1,4 +1,9 @@
 <!-- Tampilan halaman Pasien -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
 
 <title>Pasien</title>
 
@@ -31,6 +36,11 @@
         </div>
     </div>
 </body>
+
+<script src="<?php echo base_url('assets/jquery/jquery.min.js') ?>"></script>
+<script src="<?php echo base_url('assets/bootstrap/js/bootstrap.min.js') ?>"></script>
+<script src="<?php echo base_url('assets/jquery/DataTables/datatables.js') ?>"></script>
+<script src="<?php echo base_url('assets/jquery/DataTables/DataTables-1.11.5/js/dataTables.bootstrap.min.js') ?>"></script>
 <script>
     $(document).ready(function() {
     const table = $('#tabelpasien').DataTable( {
@@ -48,12 +58,18 @@
     $('.table-datatable tbody').on('click', '.hapus', function(){
         var row = $(this).closest('tr');
         var data = table.row(row).data()[0];
-        document.location.href = "pasien/addPasien" + data;
+        document.location.href = "pasien/deleteP/" + data;
     })
+    
+    $('.table-datatable tbody').on('click', '.edit', function(){
+        var row = $(this).closest('tr');
+        var data = table.row(row).data()[0];
+        document.location.href = "pasien/editP/" + data;
+    })
+    
 } );
     function tombol(){
-        return '<button class="btn btn-danger hapus">Hapus</button>';
-        // return "hada";
+        return '<button class="btn btn-danger hapus">Hapus</button>&nbsp;<button class="btn btn-primary edit">Edit</button>';
     }
 </script>
 </html>

@@ -10,11 +10,15 @@ class Pasien extends CI_Controller
         parent::__construct();
         $this->load->helper(array('text', 'url'));
         $this->load->model('pasienModel');
+        $this->load->model('Rawatmodel');
     }
     public function index()
     {
         //Menampilkan isi tabel pasien didalam index
         $data['list'] = $this->pasienModel->get_daftar_pasien();
+        $data['rawat'] = $this->Rawatmodel->get_pasien();
+        // $data['pasien'] = $this->Rawatmodel->get_pasien();
+        // $data['rawat'] = $this->Rawatmodel->rawat();
 
         $this->load->view("template/head.php");
         $this->load->view("template/topnav.php");

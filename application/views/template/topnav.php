@@ -81,24 +81,12 @@
 
   <div class="topnav" id="myTopnav">
     <a href="<?= base_url()?>" class="active"><i class="fa fa-plus mr-2">&nbsp;</i>Klinik Fitria</a>
-    <a href="<?= base_url('pasien') ?>" class="<?php if ($this->uri->segment(1) == "pasien") {
-                                                  echo "activegrey";
-                                                } ?>">Modul Pasien</a>
-    <a href="<?= base_url('obat') ?>" class="<?php if ($this->uri->segment(1) == "obat") {
-                                                echo "activegrey";
-                                              } ?>">Modul Obat</a>
-      <a href="<?= base_url('tindakan') ?>" class="<?php if ($this->uri->segment(1) == "tindakan") {
-                                                      echo "activegrey";
-                                                    } ?>">Modul Tindakan</a>
-      <a href="<?= base_url('rawat') ?>" class="<?php if ($this->uri->segment(1) == "tindakan") {
-                                                      echo "activegrey";
-                                                    } ?>">Modul Rawat</a>
-      <a href="<?= base_url('rawat/rawattindakan') ?>" class="<?php if ($this->uri->segment(1) == "tindakan") {
-                                                      echo "activegrey";
-                                                    } ?>">Modul RawatTindakan</a>
-      <a href="<?= base_url('rawat/rawatobat') ?>" class="<?php if ($this->uri->segment(1) == "tindakan") {
-                                                      echo "activegrey";
-                                                    } ?>">Modul RawatObat</a>
+    <a href="<?= base_url('pasien') ?>" class="<?php if ($this->uri->segment(1) == "pasien" | $this->uri->segment(1) == "Pasien" ) {echo "activegrey";} ?>">Modul Pasien</a>
+    <a href="<?= base_url('obat') ?>" class="<?php if ($this->uri->segment(1) == "obat" | $this->uri->segment(1) == "Obat") {echo "activegrey";} ?>">Modul Obat</a>
+      <a href="<?= base_url('tindakan') ?>" class="<?php if ($this->uri->segment(1) == "tindakan" | $this->uri->segment(1) == "Tindakan") {echo "activegrey";} ?>">Modul Tindakan</a>
+      <a href="<?= base_url('rawat/rawat') ?>" class="<?php if ($this->uri->segment(2) == "rawat") {echo "activegrey";} ?>">Modul Rawat</a>
+      <a href="<?= base_url('rawat/rawattindakan') ?>" class="<?php if ($this->uri->segment(2) == "rawattindakan") {echo "activegrey";} ?>">Modul RawatTindakan</a>
+      <a href="<?= base_url('rawat/rawatobat') ?>" class="<?php if ($this->uri->segment(2) == "rawatobat") {echo "activegrey";} ?>">Modul RawatObat</a>
     <!-- <div class="dropdown">
       <a class="btn btn-secondary dropdown-toggle" type="button" id="buttonrawat" data-bs-toggle="dropdown" aria-expanded="false">
         Dropdown button

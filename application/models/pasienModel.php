@@ -20,7 +20,6 @@ class pasienModel extends CI_Model
     function insertP($a) //membuat fungsi insert untuk input data
     {
         $data = [  //variabel data yang berisi input id,nama,alamat,tgl lahir,telepon
-            'idpasien' => $a['idpasien'],
             'nama' => $a['nama'],
             'alamat' => $a['alamat'],
             'tgllahir' => $a['tgllahir'],
@@ -31,7 +30,6 @@ class pasienModel extends CI_Model
     function updateP($a, $id) //membuat fungsi update untuk update data pasien
     {
         $data = [
-            'idpasien' => $a['idpasien'],
             'nama' => $a['nama'],
             'alamat' => $a['alamat'],
             'tgllahir' => $a['tgllahir'],

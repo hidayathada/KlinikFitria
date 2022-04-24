@@ -5,20 +5,9 @@ class Rawatmodel extends CI_Model{
 
     
 
-    public function count_all()
-    {
-        $this->db->from($this->table);
-        return $this->db->count_all_results();
-    }
-
     public function obat(){
         return $this->db->get('obat')->result();
     }
-    
-    public function tindakan(){
-        return $this->db->get('tindakan')->result();
-    }
-    
     
     public function get_pasien(){
         return $this->db->get('pasien')->result();
@@ -43,6 +32,7 @@ class Rawatmodel extends CI_Model{
         return $query;
     }
     
+    // ============================================= MODUL RAWAT ================================= //
     public function rawat(){
         $this->db->select("*");
         $this->db->from("rawat");
@@ -64,20 +54,51 @@ class Rawatmodel extends CI_Model{
         return $this->db->delete('rawat', array('idrawat' =>$idrawat));
     }
 
+    public function inputUangMuka($data, $id){
+        return $this->db->update('rawat', $data, array('idrawat' => $id));
+    }
+
     // ============================================== RAWAT TINDAKAN ================================//
     public function rawattindakan(){
         $this->db->select("*");
         $this->db->from("rawattindakan");
-        $this->db->join("rawat", "rawattindakan.idrawat = rawat.idrawat");
+        // $this->db->join("rawat", "rawattindakan.idrawat = rawat.idrawat");
         $this->db->join("tindakan", "rawattindakan.idtindakan = tindakan.idtindakan");
         $query = $this->db->get()->result();
         return $query;
     }
-
-    public function get_obat(){
-        return $this->db->get('obat')->result();
+    
+    public function tindakan(){
+        return $this->db->get('tindakan')->result();
     }
     
+    public function get_harga_tindakan($id){
+        $this->db->where('idtindakan', $id);
+        return $this->db->get('tindakan')->result();
+    }
+
+    public function get_sum_harga($id){
+        $data = $this->db->query("SELECT SUM(harga) AS total FROM rawattindakan WHERE idrawat=$id")->result();
+        // $this->db->select_sum('harga');
+        // $query = $this->db->get('rawattindakan');
+        return $data;
+    }
+
+    public function addRawatTindakan($data){
+        return $this->db->insert('rawattindakan', $data);
+    }
+    
+    public function editRawattindakan($data, $id){
+        return $this->db->update('rawattindakan', $data, array('idrawattindakan' => $id));
+    }
+    
+    public function deleterawattindakan($idrawat){
+        return $this->db->delete('rawattindakan', array('idrawattindakan' =>$idrawat));
+    }
+    
+    public function updateTblRawat($data, $id){
+        return $this->db->update('rawat', $data, array('idrawat' => $id));
+    }
     // ============================================== RAWAT OBAT ================================//
     public function rawatobat(){
         $this->db->select("*");
@@ -93,11 +114,22 @@ class Rawatmodel extends CI_Model{
         return $this->db->get('obat')->result();
     }
 
+    public function get_sum_harga_obat($id){
+        $data = $this->db->query("SELECT SUM(totalrawatobat) AS total FROM rawatobat WHERE idrawat=$id")->result();
+        // $this->db->select_sum('harga');
+        // $query = $this->db->get('rawattindakan');
+        return $data;
+    }
+
     public function addRawatObat($data){
         return $this->db->insert('rawatobat', $data);
     }
     
     public function editRawatObat($data, $id){
         return $this->db->update('rawatobat', $data, array('idrawatobat' => $id));
+    }
+
+    public function get_obat(){
+        return $this->db->get('obat')->result();
     }
 }
