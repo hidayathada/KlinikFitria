@@ -193,9 +193,7 @@
                   </div>
                   <!-- end div modal-->
                   <?php }else{?>
-                    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#detailRawat<?= $i->idrawat ?>">
-                      Detail
-                    </button> -->
+                    <a href="<?= base_url("rawat/laporan_pdf")?>" type="button" class="btn btn-warning">Print PDF</a>
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editRawat<?= $i->idrawat ?>">
                       Edit
                     </button>

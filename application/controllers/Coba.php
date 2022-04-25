@@ -69,5 +69,6 @@ class Coba extends CI_Controller {
     public function delete(){
         $this->M_ajax->delete();
     }
+    
  
 }

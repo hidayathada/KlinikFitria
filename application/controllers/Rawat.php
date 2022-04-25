@@ -65,6 +65,16 @@ class Rawat extends CI_Controller {
         redirect('rawat');
     }
 
+    public function laporan_pdf(){
+
+        $data['data'] = "Ini Laporan PDF";
+        $this->load->library('pdf');
+        $this->pdf->setPaper('A4', 'potrait');
+        $this->pdf->set_option('isRemoteEnabled', true);
+        $this->pdf->filename = "laporan-klinikfitria.pdf";
+        $this->pdf->load_view('v_laporan_pdf', $data);
+    }
+
     //=================================== RAWAT TINDAKAN ===============================//
     public function rawattindakan(){
         $url = 'http://rosihanari.net/api/api.php?get=dokter';
