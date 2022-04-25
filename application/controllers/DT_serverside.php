@@ -33,6 +33,8 @@ $primaryKey = 'idpasien';
 // The `db` parameter represents the column name in the database, while the `dt`
 // parameter represents the DataTables column identifier. In this case simple
 // indexes
+$no =1;
+
 $columns = array(
     array( 'db' => 'idpasien', 'dt' => 0 ),
     array( 'db' => 'nama', 'dt' => 1 ),

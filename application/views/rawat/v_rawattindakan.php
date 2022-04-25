@@ -101,7 +101,7 @@
               <tr>
                 <!-- <th class="text-center">ID Rawat</th> -->
                 <th class="text-center">No</th>
-                <th class="text-center">ID Rawat Tindakan</th>
+                <th class="text-center">ID Rawat</th>
                 <th class="text-center">Nama Tindakan</th>
                 <th class="text-center">Nama Dokter</th>
                 <th class="text-center">Total Tindakan</th>
@@ -113,7 +113,7 @@
               <?php foreach ($rawattindakan as $i) : ?>
                 <tr align="center">
                   <td><?= $no++?></td>
-                  <td><?= $i->idrawattindakan?></td>
+                  <td><?= "R00" . $i->idrawat?></td>
                   <td><?= $i->namatindakan ?></td>
                   <td><?= $i->namadokter?></td>
                   <td><?= $i->harga?></td>
