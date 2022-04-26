@@ -37,8 +37,8 @@ class Rawat extends CI_Controller {
         $this->load->view('layout/v_navbar.php');
         $this->load->view('layout/v_sidebar.php');
         $this->load->view('rawat/v_rawat.php', $data);
-        $this->load->view('rawat/v_rawattindakan.php', $data2);
         $this->load->view('rawat/v_rawatobat.php', $data3);
+        $this->load->view('rawat/v_rawattindakan.php', $data2);
         $this->load->view('layout/v_footer.php');
     }
 
@@ -115,19 +115,34 @@ class Rawat extends CI_Controller {
         $data['idtindakan'] = $this->input->post('tindakan');
         $data['namadokter'] = $this->input->post('dokter');
         $data['jumlah'] = $this->input->post('jumlah');
-        $harga = $this->rawatmodel->get_harga_tindakan($this->input->post('tindakan'))[0]->biaya;
-        $data['harga'] = $this->input->post('jumlah') * $harga;
+        $harga = $this->rawatmodel->get_harga_tindakan($this->input->post('tindakan'))[0]->biaya; //MENGAMBIL BIAYA TINDAKAN DARI TABEL TINDAKAN BERDASAR ID TINDAKAN
+        $data['harga'] = $this->input->post('jumlah') * $harga; //INPUT TOTAL BIAYA KE KOLOM HARGA DI TABEL RAWAT TINDAKAN
         $this->rawatmodel->addRawatTindakan($data);
 
         // UPDATE TOTAL TINDAKAN KE MODUL RAWAT
         $idrawat = $this->input->post('idrawat');
-        $data = $this->rawatmodel->get_sum_harga($idrawat);
-        $totaltindakan = $this->rawatmodel->get_sum_harga($idrawat)[0]->total;
-        $data2['totaltindakan'] = $totaltindakan;
-        $this->rawatmodel->updateTblRawat($data2, $idrawat);
-
-        // INPUT UANG MUKA
-        redirect("rawat/rawattindakan");
+        // $totaltindakan = $this->rawatmodel->get_sum_harga($idrawat)[0]->total; // MENJUMLAH SEMUA BIAYA TINDAKAN BERDASARKAN ID RAWAT DI TABEL RAWAT TINDAKAN
+        // $data2['totaltindakan'] = $totaltindakan; // INPUT TOTAL TINDAKAN YG SUDAH DIDAPAT KE KOLOM TOTAL TINDAKAN DI TABEL RAWAT
+        if($this->rawatmodel->getRawatById($idrawat)[0]->totalobat <= 0){
+            $idrawat = $this->input->post('idrawat');
+            $totaltindakan = $this->rawatmodel->get_sum_harga($idrawat)[0]->total;
+            $data2['totaltindakan'] = $totaltindakan;
+            $this->rawatmodel->updateTblRawat($data2, $idrawat);
+            redirect("rawat");
+        }elseif($this->rawatmodel->getRawatById($idrawat)[0]->totalobat > 0){
+            $idrawat = $this->input->post('idrawat');
+            $totaltindakan = $this->rawatmodel->get_sum_harga($idrawat)[0]->total;
+            $totalobat = $this->rawatmodel->getRawatById($idrawat)[0]->totalobat;
+            $uangmuka = $this->rawatmodel->getRawatById($idrawat)[0]->totalobat;
+            $totalharga = $totaltindakan + $totalobat;
+            $kurang = $totalharga - $uangmuka;
+            $data3['totaltindakan'] = $totaltindakan;
+            $data3['totalharga'] = $totalharga;
+            $data3['kurang'] = $kurang;
+            $this->rawatmodel->updateTblRawat($data3, $idrawat);
+            // var_dump($idrawat, $totaltindakan, $totalobat, $uangmuka, $totalharga, $kurang);
+            redirect("rawat");
+        }
 
     }
     
@@ -148,14 +163,14 @@ class Rawat extends CI_Controller {
         $totaltindakan = $this->rawatmodel->get_sum_harga($idrawat)[0]->total;
         $data2['totaltindakan'] = $totaltindakan;
         $this->rawatmodel->updateTblRawat($data2, $idrawat);
-        redirect("rawat/rawattindakan");
+        redirect("rawat");
 
     }
     
     public function deleteRawatTindakan(){
         $id = $this->input->post("idrawattindakan");
         $this->rawatmodel->deleterawattindakan($id);
-        redirect("rawat/rawattindakan");
+        redirect("rawat");
     }
 
     //=================================== RAWAT OBAT ===============================//
@@ -177,13 +192,36 @@ class Rawat extends CI_Controller {
         $data['totalrawatobat'] = $this->input->post('jumlah') * $harga;
         $this->rawatmodel->addRawatObat($data);
 
-        // UPDATE TOTAL OBAT KE MODUL RAWAT
         $idrawat = $this->input->post('idrawat');
-        $data = $this->rawatmodel->get_sum_harga_obat($idrawat);
-        $totalobat = $this->rawatmodel->get_sum_harga_obat($idrawat)[0]->total;
-        $data2['totalobat'] = $totalobat;
-        $this->rawatmodel->updateTblRawat($data2, $idrawat);
-        redirect("rawat/rawatobat");
+        // $totaltindakan = $this->rawatmodel->get_sum_harga($idrawat)[0]->total; // MENJUMLAH SEMUA BIAYA TINDAKAN BERDASARKAN ID RAWAT DI TABEL RAWAT TINDAKAN
+        // $data2['totaltindakan'] = $totaltindakan; // INPUT TOTAL TINDAKAN YG SUDAH DIDAPAT KE KOLOM TOTAL TINDAKAN DI TABEL RAWAT
+        if($this->rawatmodel->getRawatById($idrawat)[0]->totalobat <= 0){
+            $idrawat = $this->input->post('idrawat');
+            $totalobat = $this->rawatmodel->get_sum_harga_obat($idrawat)[0]->total;
+            $data2['totalobat'] = $totalobat;
+            $this->rawatmodel->updateTblRawat($data2, $idrawat);
+            redirect("rawat");
+        }elseif($this->rawatmodel->getRawatById($idrawat)[0]->totalobat > 0){
+            $idrawat = $this->input->post('idrawat');
+            $totalobat = $this->rawatmodel->get_sum_harga_obat($idrawat)[0]->total;
+            $totaltindakan = $this->rawatmodel->getRawatById($idrawat)[0]->totaltindakan;
+            $uangmuka = $this->rawatmodel->getRawatById($idrawat)[0]->totalobat;
+            $totalharga = $totaltindakan + $totalobat;
+            
+            $data3['totalobat'] = $totalobat;
+            $data3['totalharga'] = $totalharga;
+            $data3['kurang'] = $totalharga - $uangmuka;
+            $this->rawatmodel->updateTblRawat($data3, $idrawat);
+            // var_dump($idrawat, $totaltindakan, $totalobat, $uangmuka, $totalharga);
+            redirect("rawat");
+        }
+        // // UPDATE TOTAL OBAT KE MODUL RAWAT
+        // $idrawat = $this->input->post('idrawat');
+        // $data = $this->rawatmodel->get_sum_harga_obat($idrawat);
+        // $totalobat = $this->rawatmodel->get_sum_harga_obat($idrawat)[0]->total;
+        // $data2['totalobat'] = $totalobat;
+        // $this->rawatmodel->updateTblRawat($data2, $idrawat);
+        // redirect("rawat");
     }
     
     public function editRawatObat(){
@@ -201,7 +239,13 @@ class Rawat extends CI_Controller {
         $totalobat = $this->rawatmodel->get_sum_harga_obat($idrawat)[0]->total;
         $data2['totalobat'] = $totalobat;
         $this->rawatmodel->updateTblRawat($data2, $idrawat);
-        redirect("rawat/rawatobat");
+        redirect("rawat");
+    }
+
+    public function deleteRawatObat($id){
+        // $id = $this->input->post("idrawattindakan");
+        $this->rawatmodel->deleterawatobat($id);
+        redirect("rawat");
     }
 
     //=================================== FUNCTION UPDATE MODUL RAWAT ================================// 

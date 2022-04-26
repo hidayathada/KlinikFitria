@@ -8,6 +8,14 @@ class obatModel extends CI_Model
     {
         $this->load->database(); //untuk memanggil yaitu load database
     }
+
+    public function chartObat(){
+
+        $query = "SELECT nama, SUM(jumlah) as total FROM rawatobat JOIN obat ON rawatobat.idobat = obat.idobat GROUP BY nama";
+        $result = $this->db->query($query)->result();
+        return $result;
+    }
+
     function get_daftar_obat() //Membuat fungsi untuk memanggil tabel pasien
     {
         return $this->db->get('obat')->result_array(); //result array untuk memanggil seluruh data

@@ -32,6 +32,10 @@
                                 <!-- Button Submit akan mengarah kesavedataP -->
                                 <form action="<?php echo base_url('Pasien/updateP/') . $detail['idpasien'] ?>" method="post" enctype="multipart/form-data">
                                     <div class="mb-3">
+                                        <label for="nama" class="form-label">ID Pasien</label>
+                                        <input type="text" name="nama" class="form-control" id="nama" value="<?php echo "P00" . $detail['idpasien'] ?>" readonly>
+                                    </div>
+                                    <div class="mb-3">
                                         <label for="nama" class="form-label">Nama Pasien</label>
                                         <input type="text" name="nama" class="form-control" id="nama" value="<?php echo $detail['nama'] ?>">
                                     </div>

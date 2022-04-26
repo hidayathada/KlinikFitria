@@ -25,6 +25,6 @@ function tanggal_indonesia($tanggal){
 		// var 2 = tahun
 }
 
-echo tanggal_indonesia(date('Y-m-d')); //28 Oktober 2021
+tanggal_indonesia(date('Y-m-d')); //28 Oktober 2021
 // atau
 // echo tanggal_indonesia('2021-10-28');

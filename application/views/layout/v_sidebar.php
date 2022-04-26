@@ -1,9 +1,10 @@
 <div class="left-side-bar">
 		<div class="brand-logo">
-			<a href="index.html">
+			<a href="#">
 				<!-- <img src="vendors/images/deskapp-logo.svg" alt="" class="dark-logo">
 				<img src="vendors/images/deskapp-logo-white.svg" alt="" class="light-logo"> -->
-                <marquee behavior="alternate"><h4 class="text-dark">Klinik Fitria</h4></marquee>
+                <marquee behavior="alternate" scrollamount="5"><h4 class="text-light"><i class="fa fa-plus mr-2"></i>Klinik Fitria</h4></marquee>
+                <!-- <h4 class="text-light"><i class="fa fa-plus mr-2"></i>Klinik Fitria</h4> -->
 			</a>
 			<div class="close-sidebar" data-toggle="left-sidebar-close">
 				<i class="ion-close-round"></i>

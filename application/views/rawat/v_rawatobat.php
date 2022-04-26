@@ -18,7 +18,7 @@
                 </div>
                 <div class="modal-body">
                   <!-- FORM TAMBAH -->
-                  <form method="post" action="<?php echo base_url() ?>rawat/addRawatObat">
+                  <form method="post" action="<?= base_url('rawat/addRawatObat')?>">
 
                     <div class="row">
                       <div class="col-sm-12">
@@ -27,7 +27,7 @@
                           <label>Nama Pasien</label>
                           <select name="idrawat" class="form-control">
                             <?php foreach($rawat as $i):?>
-                              <option value="<?= $i->idrawat?>"><?= "ID Rawat : " . $i->idrawat . " " . "Nama Pasien : " . $i->nama?></option>
+                              <option value="<?= $i->idrawat?>"><?= "ID Rawat : " . "R00" . $i->idrawat . " | " . "Nama Pasien : " . $i->nama?></option>
                               <?php endforeach?>
                           </select>
                         </div>
@@ -53,7 +53,7 @@
                         <!-- text input -->
                         <div class="form-group">
                           <label>Jumlah</label>
-                          <input type="number" class="form-control" name="jumlah" placeholder="Jumlah">
+                          <input type="number" class="form-control" name="jumlah" placeholder="Jumlah" autocomplete="off">
                         </div>
                       </div>
                     </div>
@@ -102,9 +102,10 @@
                     <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#editRawatObat<?= $no ?>">
                     <i class="icon-copy dw dw-edit-1 mr-1"></i>Edit
                     </button>
-                    <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteRawat<?= $i->idrawat ?>">
+                    <!-- <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteRawat<?= $i->idrawat ?>">
                     <i class="icon-copy dw dw-delete-3 mr-1"></i>Hapus
-                    </button>
+                    </button> -->
+                    <a class="btn btn-sm btn-danger" href="<?= base_url()?>rawat/deleteRawatObat/<?= $i->idrawatobat?>"><i class="icon-copy dw dw-delete-3 mr-1"></i>Hapus</a>
                   </td>
                   <!-- MODAL EDIT -->
           <div class="modal fade" id="editRawatObat<?= $no ?>">

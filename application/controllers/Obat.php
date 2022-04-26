@@ -16,6 +16,7 @@ class Obat extends CI_Controller
     {
         //Menampilkan isi tabel obat didalam index
         $data['list'] = $this->obatModel->get_daftar_obat();
+        $data['chartObat'] = $this->obatModel->chartObat();
 
         $this->load->view('layout/v_head.php');
         $this->load->view('layout/v_navbar.php');

@@ -67,7 +67,7 @@
                         <!-- text input -->
                         <div class="form-group">
                           <label>Jumlah Tindakan</label>
-                          <input type="text" class="form-control" name="jumlah">
+                          <input type="text" class="form-control" name="jumlah" autocomplete="off">
                           </select>
                         </div>
                       </div>
@@ -206,19 +206,26 @@
             </div>
           </div>
           <!-- end div modal-->
-          <div class="modal fade" id="deleteRawatTindakan<?= $i->idrawattindakan ?>">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h4 class="modal-title">Delete Data Rawat Tindakan</h4>
-                          <form method="post" action="<?php echo base_url() ?>rawat/deleteRawatTindakan">
-                          <div class="modal-footer justify-content-between">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                          </div>
-                        </div>
-                      </div>
+            <div class="modal fade" id="deleteRawatTindakan<?= $i->idrawattindakan ?>">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <!-- <div class="modal-header">
+                </div> -->
+                <div class="modal-body">
+                  <h4 class="modal-title mb-4">Delete Data Rawat Tindakan</h4>
+                  <form method="post" action="<?php echo base_url() ?>rawat/deleteRawatTindakan">
+                    <input type="hidden" name="idrawattindakan" value="<?= $i->idrawattindakan?>">
+                    <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-danger">Delete</button>
                     </div>
+                  </form>
+                  <!-- /FORM TAMBAH -->
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- end div modal-->
                   </div>
                 </tr>
               <?php endforeach ?>

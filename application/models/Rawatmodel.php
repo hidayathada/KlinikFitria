@@ -60,13 +60,21 @@ class Rawatmodel extends CI_Model{
         $query = $this->db->get()->result();
         return $query;
     }
+    
+    public function getRawatById($id){
+        $this->db->select("*");
+        $this->db->from("rawat");
+        $this->db->where("idrawat", $id);
+        $query = $this->db->get()->result();
+        return $query;
+    }
 
     public function add_rawat($data){
         return $this->db->insert('rawat', $data);
     }
 
     public function get_pasien(){
-        return $this->db->get('pasien');
+        return $this->db->get('pasien')->result();
     }
 
     public function edit_rawat($data, $id){
@@ -131,6 +139,10 @@ class Rawatmodel extends CI_Model{
     public function updateTblRawat($data, $id){
         return $this->db->update('rawat', $data, array('idrawat' => $id));
     }
+
+    public function updateTblRawatKurang($data, $id){
+        return $this->db->update('rawat', $data, array('idrawat' => $id));
+    }
     // ============================================== RAWAT OBAT ================================//
     public function rawatobat(){
         $this->db->select("*");
@@ -163,5 +175,9 @@ class Rawatmodel extends CI_Model{
 
     public function get_obat(){
         return $this->db->get('obat')->result();
+    }
+
+    public function deleterawatobat($idrawatobat){
+        return $this->db->delete('rawatobat', array('idrawatobat' =>$idrawatobat));
     }
 }

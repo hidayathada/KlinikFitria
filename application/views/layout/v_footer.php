@@ -1,5 +1,5 @@
 <div class="footer-wrap pd-20 mb-20 card-box">
-				DeskApp - Bootstrap 4 Admin Template By <a href="https://github.com/dropways" target="_blank">Ankit Hingarajiya</a>
+				Klinik Fitria - Develop By <a href="https://github.com/hidayathada/KlinikFitria/" target="_blank">Papaya Team</a>
 			</div>
 		</div>
 	</div>

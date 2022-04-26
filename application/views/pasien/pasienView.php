@@ -20,9 +20,23 @@
 				<div class="card-box mb-30">
 					<div class="pd-20">
 						<h2>Tabel Pasien</h2>
-	                    <a href="<?= base_url()?>pasien/addP" class="btn btn-success btn-sm mt-3">Tambah Pasien</a>
+	                    <a href="<?= base_url()?>pasien/addP" class="btn btn-success btn-sm mt-3"><i class="icon-copy ion-plus mr-1"></i>Tambah Pasien</a>
+						<button type="button" class="btn btn-sm btn-primary mt-3" data-toggle="modal" data-target="#chartTindakan"><i class="icon-copy dw dw-analytics-11 mr-1"></i>Lihat Chart</button>
+						<div class="modal fade" id="chartTindakan">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h4 class="modal-title">Alamat Pasien</h4>
+									</div>
+									<div class="modal-body">
+										<canvas id="myChart"></canvas>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- end div modal-->
 					</div>
-                    
+
 					<div class="pb-20">
 						<table class="data-table table stripe hover nowrap">
 							<thead>
@@ -41,11 +55,11 @@
 								        <td><?= "P00" . $i['idpasien']?></td>
 									    <td><?= $i['nama']?></td>
 									    <td><?= $i['alamat']?></td>
-									    <td><?= $i['tgllahir']?></td>
+									    <td><?= tanggal_indonesia($i['tgllahir'])?></td>
 									    <td><?= $i['notelp']?></td>
 									    <td align="center">
-											<a class="btn btn-primary" href="<?= base_url()?>pasien/editP/<?= $i['idpasien']?>">Edit</a>
-											<a class="btn btn-danger" href="<?= base_url()?>pasien/deleteP/<?= $i['idpasien']?>">Hapus</a>
+										<a class="btn btn-sm btn-primary" href="<?= base_url()?>pasien/editP/<?= $i['idpasien']?>"><i class="icon-copy dw dw-edit-1 mr-1"></i>Edit</a>
+										<a class="btn btn-sm btn-danger" href="<?= base_url()?>pasien/deleteP/<?= $i['idpasien']?>"><i class="icon-copy dw dw-delete-3 mr-1"></i>Hapus</a>
 										</td>
 								    </tr>
                                 <?php endforeach?> 
