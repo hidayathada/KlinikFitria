@@ -20,16 +20,20 @@ class Pasien extends CI_Controller
         // $data['pasien'] = $this->Rawatmodel->get_pasien();
         // $data['rawat'] = $this->Rawatmodel->rawat();
 
-        $this->load->view("template/head.php");
-        $this->load->view("template/topnav.php");
-        $this->load->view("pasien/pasienView.php", $data);
+        $this->load->view('layout/v_head.php');
+        $this->load->view('layout/v_navbar.php');
+        $this->load->view('layout/v_sidebar.php');
+        $this->load->view('pasien/pasienView.php', $data);
+        $this->load->view('layout/v_footer.php');
     }
     // memanggil tampilan addPasien
     public function addP()
     {
-        $this->load->view("template/head.php");
-        $this->load->view("template/topnav.php");
-        $this->load->view('pasien/addPasien');
+        $this->load->view('layout/v_head.php');
+        $this->load->view('layout/v_navbar.php');
+        $this->load->view('layout/v_sidebar.php');
+        $this->load->view('pasien/addPasien.php');
+        $this->load->view('layout/v_footer.php');
     }
     public function savedataP()
     {
@@ -42,9 +46,11 @@ class Pasien extends CI_Controller
     public function editP($a)
     {
         $data['detail'] = $this->pasienModel->get_detail_pasien($a);
-        $this->load->view("template/head.php");
-        $this->load->view("template/topnav.php");
-        $this->load->view('pasien/editPasien', $data);
+        $this->load->view('layout/v_head.php');
+        $this->load->view('layout/v_navbar.php');
+        $this->load->view('layout/v_sidebar.php');
+        $this->load->view('pasien/editPasien.php', $data);
+        $this->load->view('layout/v_footer.php');
     }
     public function updateP($id)
     {

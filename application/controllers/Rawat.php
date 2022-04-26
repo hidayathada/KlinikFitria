@@ -14,12 +14,32 @@ class Rawat extends CI_Controller {
     }
     
     public function rawat(){
+        // RAWAT
         $data['pasien'] = $this->rawatmodel->get_pasien();
         $data['rawat'] = $this->rawatmodel->rawat();
 
-        $this->load->view("template/head.php");
-        $this->load->view("template/topnav.php");
-        $this->load->view('rawat/v_rawat.php',$data);
+        // RAWAT TINDAKAN
+        $url = 'http://rosihanari.net/api/api.php?get=dokter';
+        $get_url = file_get_contents($url);
+        $data2 = json_decode($get_url);
+        $data2['dokter'] = $data2;
+        $data2['rawat'] = $this->rawatmodel->rawat();
+        $data2['tindakan'] = $this->rawatmodel->tindakan();
+        $data2['rawattindakan'] = $this->rawatmodel->rawattindakan();
+        $data2['chartDokter'] = $this->rawatmodel->chartDokter();
+
+        // RAWAT OBAT
+        $data3['obat'] = $this->rawatmodel->get_obat();
+        $data3['rawatobat'] = $this->rawatmodel->rawatobat();
+        $data3['rawat'] = $this->rawatmodel->rawat();
+        
+        $this->load->view('layout/v_head.php');
+        $this->load->view('layout/v_navbar.php');
+        $this->load->view('layout/v_sidebar.php');
+        $this->load->view('rawat/v_rawat.php', $data);
+        $this->load->view('rawat/v_rawattindakan.php', $data2);
+        $this->load->view('rawat/v_rawatobat.php', $data3);
+        $this->load->view('layout/v_footer.php');
     }
 
     public function addRawat()

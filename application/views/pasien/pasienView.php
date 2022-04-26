@@ -1,55 +1,60 @@
-<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous"> -->
-<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script> -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<!-- CSS only -->
-<!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-<link href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> -->
-<!-- <link rel="stylesheet" href="<?= base_url('assets/jquery/DataTables/datatables.min.css')?>"> -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.9/dist/sweetalert2.all.min.js"></script>
-
-<title>Pasien</title>
-
-
-<body>
-    <div class="container mt-5">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header bg-secondary">
-                    <h4 class="text-light">Modul Pasien</h4>
-                </div>
-                <div class="card-body">
-                    <!-- Button Tambah pasien -->
-                    <a href="Pasien/addP" class="btn btn-success mb-3 float-right">Tambah Pasien</a>
-                    <table class="table display nowrap table-bordered table-striped table-datatable tbody" style="width:100%" id="tabelpasien">
-                        <thead>
-                            <tr>
-                                <!-- Nama table head pasien -->
-                                <th class="text-center">ID Pasien</th>
-                                <th class="text-center">Nama</th>
-                                <th class="text-center">Alamat</th>
-                                <th class="text-center">Tanggal Lahir</th>
-                                <th class="text-center">Telepon</th>
-                                <th class="text-center">Action</th>
-                            </tr>
-                        </thead>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-</body>
-
-<script src="<?php //echo base_url('assets/jquery/jquery.min.js') ?>"></script>
-<script src="<?php //echo base_url('assets/bootstrap/js/bootstrap.min.js') ?>"></script>
-<script src="<?php echo base_url('assets/jquery/DataTables/datatables.js') ?>"></script>
-<script src="<?php //echo base_url('assets/jquery/DataTables/DataTables-1.11.5/js/dataTables.bootstrap.min.js') ?>"></script>
-<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script> -->
-<script src="<?php echo base_url('assets/jquery/DataTables/datatables.min.js') ?>"></script>
-<script>
+<div class="main-container">
+		<div class="pd-ltr-20 xs-pd-20-10">
+			<div class="min-height-200px">
+				<div class="page-header">
+					<div class="row">
+						<div class="col-md-6 col-sm-12">
+							<div class="title">
+								<h4>Data Pasien</h4>
+							</div>
+							<nav aria-label="breadcrumb" role="navigation">
+								<ol class="breadcrumb">
+									<!-- <li class="breadcrumb-item"><a href="index.html">Pasien</a></li> -->
+									<!-- <li class="breadcrumb-item active" aria-current="page">DataTable</li> -->
+								</ol>
+							</nav>
+						</div>
+					</div>
+				</div>
+				<!-- Simple Datatable start -->
+				<div class="card-box mb-30">
+					<div class="pd-20">
+						<h2>Tabel Pasien</h2>
+	                    <a href="<?= base_url()?>pasien/addP" class="btn btn-success btn-sm mt-3">Tambah Pasien</a>
+					</div>
+                    
+					<div class="pb-20">
+						<table class="data-table table stripe hover nowrap">
+							<thead>
+								<tr>
+									<th class="table-plus datatable-nosort">ID Pasien</th>
+									<th>Nama Pasien</th>
+									<th>Alamat</th>
+									<th>Tanggal Lahir</th>
+									<th>No Telp</th>
+									<th class="datatable-nosort"><center>Action</center></th>
+								</tr>
+							</thead>
+							<tbody>
+                                <?php foreach($list as $i):?>
+                                    <tr>
+								        <td><?= "P00" . $i['idpasien']?></td>
+									    <td><?= $i['nama']?></td>
+									    <td><?= $i['alamat']?></td>
+									    <td><?= $i['tgllahir']?></td>
+									    <td><?= $i['notelp']?></td>
+									    <td align="center">
+											<a class="btn btn-primary" href="<?= base_url()?>pasien/editP/<?= $i['idpasien']?>">Edit</a>
+											<a class="btn btn-danger" href="<?= base_url()?>pasien/deleteP/<?= $i['idpasien']?>">Hapus</a>
+										</td>
+								    </tr>
+                                <?php endforeach?> 
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+<!-- <script>
     $(document).ready(function() {
     const table = $('#tabelpasien').DataTable( {
         "processing": true,
@@ -92,7 +97,7 @@
     function tombol(){
         return '<button class="btn btn-danger hapus">Hapus</button>&nbsp;<button class="btn btn-primary edit">Edit</button>';
     }
-</script>
+</script> -->
 <script>
 </script>
 </html>

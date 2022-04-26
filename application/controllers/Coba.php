@@ -5,7 +5,7 @@ class Coba extends CI_Controller {
     
     public function __construct() { 
         parent::__construct();
-        $this->load->model('M_ajax');
+        // $this->load->model('M_ajax');
         // $this->load->library('Curl');
     }
  
@@ -67,7 +67,19 @@ class Coba extends CI_Controller {
     }
 
     public function delete(){
-        $this->M_ajax->delete();
+        $this->load->model('rawatmodel');
+        $data1 = $this->rawatmodel->get_pasien_bulan_ini();
+        // $data2 = $this->rawatmodel->chartDokter()[0]->jumlahdokter;
+        echo $data1;
+    }
+
+    public function coba(){
+        // $this->load->view('v_datatables.php');
+        $this->load->view('layout/v_head.php');
+        $this->load->view('layout/v_navbar.php');
+        $this->load->view('layout/v_sidebar.php');
+        $this->load->view('pasien/pasienView.php');
+        $this->load->view('layout/v_footer.php');
     }
     
  

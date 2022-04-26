@@ -17,16 +17,20 @@ class Obat extends CI_Controller
         //Menampilkan isi tabel obat didalam index
         $data['list'] = $this->obatModel->get_daftar_obat();
 
-        $this->load->view("template/head.php");
-        $this->load->view("template/topnav.php");
-        $this->load->view("obat/obatView.php", $data);
+        $this->load->view('layout/v_head.php');
+        $this->load->view('layout/v_navbar.php');
+        $this->load->view('layout/v_sidebar.php');
+        $this->load->view('obat/obatView.php', $data);
+        $this->load->view('layout/v_footer.php');
     }
     // memanggil tampilan addPasien
     public function addO()
     {
-        $this->load->view("template/head.php");
-        $this->load->view("template/topnav.php");
-        $this->load->view('obat/addObat');
+        $this->load->view('layout/v_head.php');
+        $this->load->view('layout/v_navbar.php');
+        $this->load->view('layout/v_sidebar.php');
+        $this->load->view('obat/addObat.php');
+        $this->load->view('layout/v_footer.php');
     }
     public function savedataO()
     {
@@ -38,9 +42,11 @@ class Obat extends CI_Controller
     public function editO($a)
     {
         $data['detail'] = $this->obatModel->get_detail_obat($a);
-        $this->load->view("template/head.php");
-        $this->load->view("template/topnav.php");
-        $this->load->view('obat/editObat', $data);
+        $this->load->view('layout/v_head.php');
+        $this->load->view('layout/v_navbar.php');
+        $this->load->view('layout/v_sidebar.php');
+        $this->load->view('obat/editObat.php', $data);
+        $this->load->view('layout/v_footer.php');
     }
     public function updateO($id)
     {

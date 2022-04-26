@@ -17,16 +17,20 @@ class Tindakan extends CI_Controller
         //Menampilkan isi tabel obat didalam index
         $data['list'] = $this->tindakanModel->get_daftar_tindakan();
 
-        $this->load->view("template/head.php");
-        $this->load->view("template/topnav.php");
-        $this->load->view("tindakan/tindakanView.php", $data);
+        $this->load->view('layout/v_head.php');
+        $this->load->view('layout/v_navbar.php');
+        $this->load->view('layout/v_sidebar.php');
+        $this->load->view('tindakan/tindakanView.php', $data);
+        $this->load->view('layout/v_footer.php');
     }
     // memanggil tampilan addPasien
     public function addT()
     {
-        $this->load->view("template/head.php");
-        $this->load->view("template/topnav.php");
-        $this->load->view('tindakan/addTindakan');
+        $this->load->view('layout/v_head.php');
+        $this->load->view('layout/v_navbar.php');
+        $this->load->view('layout/v_sidebar.php');
+        $this->load->view('tindakan/addTindakan.php');
+        $this->load->view('layout/v_footer.php');
     }
     public function savedataT()
     {
@@ -38,9 +42,11 @@ class Tindakan extends CI_Controller
     public function editT($a)
     {
         $data['detail'] = $this->tindakanModel->get_detail_tindakan($a);
-        $this->load->view("template/head.php");
-        $this->load->view("template/topnav.php");
-        $this->load->view('tindakan/editTindakan', $data);
+        $this->load->view('layout/v_head.php');
+        $this->load->view('layout/v_navbar.php');
+        $this->load->view('layout/v_sidebar.php');
+        $this->load->view('tindakan/editTindakan.php', $data);
+        $this->load->view('layout/v_footer.php');
     }
     public function updateT($id)
     {

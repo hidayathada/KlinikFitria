@@ -3,14 +3,34 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Rawatmodel extends CI_Model{
 
-    
-
-    public function obat(){
-        return $this->db->get('obat')->result();
+    public function num_obat(){
+        $this->db->select('*');
+        $this->db->from('obat');
+        $query = $this->db->get()->num_rows();
+        return $query;
+    }
+    public function get_pasien_bulan_ini(){
+        $this->db->select('*');
+        $this->db->from('rawat');
+        $this->db->where('MONTH(tglrawat)', date('m'));
+        $this->db->where('YEAR(tglrawat)', date('Y'));
+        $this->db->join('pasien', 'rawat.idpasien = pasien.idpasien');
+        $query = $this->db->get()->num_rows();
+        return $query;
     }
     
-    public function get_pasien(){
-        return $this->db->get('pasien')->result();
+    public function get_tindakan_bulan_ini(){
+        $this->db->select('*');
+        $this->db->from('rawat');
+        $this->db->where('MONTH(tglrawat)', date('m'));
+        $this->db->where('YEAR(tglrawat)', date('Y'));
+        $this->db->join('rawattindakan', 'rawat.idrawat = rawattindakan.idrawat');
+        $query = $this->db->get()->num_rows();
+        return $query;
+    }
+    
+    public function obat(){
+        return $this->db->get('obat')->result();
     }
     
     public function get_rawat(){
@@ -45,6 +65,10 @@ class Rawatmodel extends CI_Model{
         return $this->db->insert('rawat', $data);
     }
 
+    public function get_pasien(){
+        return $this->db->get('pasien');
+    }
+
     public function edit_rawat($data, $id){
         $this->db->where('idrawat',$id);
         return $this->db->update('rawat', $data);
@@ -56,6 +80,14 @@ class Rawatmodel extends CI_Model{
 
     public function inputUangMuka($data, $id){
         return $this->db->update('rawat', $data, array('idrawat' => $id));
+    }
+
+    public function chartDokter(){
+        // $query = "SELECT namadokter AS dokter, COUNT(*) AS jumlahdokter FROM rawattindakan
+        //             GROUP BY namadokter";
+        $query = "SELECT namadokter, Count(*) AS jumlahdokter FROM rawattindakan GROUP BY namadokter";
+        $result = $this->db->query($query)->result();
+        return $result;
     }
 
     // ============================================== RAWAT TINDAKAN ================================//

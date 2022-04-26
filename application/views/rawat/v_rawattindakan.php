@@ -1,25 +1,30 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
-<title>Rawat</title>
-
-<body>
-  <div class="container mt-5">
-    <div class="col-12">
-      <div class="card">
-        <div class="card-header bg-secondary">
-          <h4 class="text-light">Modul Rawat Tindakan</h4>
-        </div>
-        <div class="card-body">
-          <!-- <a href="Pasien/addP" class="btn btn-success mb-3 float-right">Tambah Pasien</a> -->
-          <button type="button" class="btn btn-success mb-3" data-toggle="modal" data-target="#dataRawat">
-            Tambah Data Rawat
+<section class="py-3">
+			<div class="min-height-200px">
+				
+				<!-- Simple Datatable start -->
+				<div class="card-box mb-30">
+					<div class="pd-20">
+						<h3>Tabel Rawat Tindakan</h3>
+            <button type="button" class="btn btn-sm btn-success mt-3" data-toggle="modal" data-target="#dataRawatTindakan">
+            <i class="icon-copy ion-plus mr-1"></i>Tambah Data Rawat Tindakan
           </button>
+          <button type="button" class="btn btn-sm btn-primary mt-3" data-toggle="modal" data-target="#chartTindakan"><i class="icon-copy dw dw-analytics-11 mr-1"></i>Lihat Chart</button>
+          <div class="modal fade" id="chartTindakan">
+            <div class="modal-dialog">
+							<div class="modal-content">
+                  <div class="modal-header">
+                      <h4 class="modal-title">Frekuensi Banyaknya Tindakan Dokter</h4>
+                  </div>
+                  <div class="modal-body">
+                    <canvas id="myChart"></canvas>
+                  </div>
+                  </div>
+                </div>
+              </div>
+              <!-- end div modal-->
 
           <!-- MODAL EDIT -->
-          <div class="modal fade" id="dataRawat">
+          <div class="modal fade" id="dataRawatTindakan">
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
@@ -28,7 +33,6 @@
                 <div class="modal-body">
                   <!-- FORM TAMBAH -->
                   <form method="post" action="<?php echo base_url() ?>rawat/addRawatTindakan">
-                    <!-- <input type="hidden" name="id" id="id" value=> -->
                     
                     <div class="row">
                       <div class="col-sm-12">
@@ -94,9 +98,11 @@
             </div>
           </div>
           <!-- end div modal-->
-
-          <a href="#" class="btn btn-danger float-right mb-3"><i class="fa fa-print"></i>&nbsp;Cetak Nota</a>
-          <table class="table nowrap table-bordered table-striped" style="width:100%" id="tabeldokter">
+          </div>
+          
+                    
+					<div class="pb-20">
+						<table class="data-table table stripe hover nowrap">
             <thead>
               <tr>
                 <!-- <th class="text-center">ID Rawat</th> -->
@@ -119,14 +125,11 @@
                   <td><?= $i->harga?></td>
                   <td>
 
-                    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#detailRawat<?= $i->idrawat ?>">
-                      Detail
-                    </button> -->
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editRawatTindakan<?= $i->idrawattindakan ?>">
-                      Edit
+                    <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#editRawatTindakan<?= $i->idrawattindakan ?>">
+                    <i class="icon-copy dw dw-edit-1 mr-1"></i>Edit
                     </button>
-                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteRawatTindakan<?= $i->idrawattindakan ?>">
-                      Hapus
+                    <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteRawatTindakan<?= $i->idrawattindakan ?>">
+                    <i class="icon-copy dw dw-delete-3 mr-1"></i>Hapus
                     </button>
                   </td>
             <div class="modal fade" id="editRawatTindakan<?= $i->idrawattindakan ?>">
@@ -220,87 +223,40 @@
                 </tr>
               <?php endforeach ?>
             </tbody>
-          </table>
-          <!-- Button trigger modal -->
-        </div>
-      </div>
-    </div>
-  </div>
-</body>
-<script src="<?php echo base_url('assets/jquery/jquery.min.js') ?>"></script>
-<script src="<?php echo base_url('assets/bootstrap/js/bootstrap.min.js') ?>"></script>
-<script src="<?php echo base_url('assets/jquery/DataTables/datatables.js') ?>"></script>
-<!-- <script src="<?php echo base_url('assets/jquery/DataTables/DataTables-1.11.5/js/dataTables.bootstrap.min.js') ?>"></script> -->
-<!-- <script>
-$(document).ready(function(){
-    $.ajax({
-        url: 'http://rosihanari.net/api/api.php?get=dokter',
-        dataType: 'json',
-        method : "GET",
-        success: function(response)
-        {
-            console.log(response);
-            $('#tabeldokter').DataTable({
-                serverSide : true,
-                processing : true,
-                ordering : false,
-                searching : true,
-                paging : true,
-                info : false,
-                ajax : function(data, callback, settings){
-                    var data = [];
-                    response.forEach(element => {
-                        console.log(element);
-                        data.push([
-                            element.iddokter, element.namadokter
-                        ]);
-                    })
-                    
-                    setTimeout(function(){
-                        callback({
-                            draw: data.draw,
-                            data: data,
-                            recordTotal: data.length,
-                            recordFiltered: data.length,
-                        });
-                    }, 50);
-                },
-                scrollY:200,
-                scroller : {
-                    loadingIndicator:true
-                },
-            });
-        }
-    })
-})
-</script> -->
-<!-- <script>
-    $(document).ready(function(){
-    $.ajax({
-        url: 'http://rosihanari.net/api/api.php?get=dokter',
-        dataType: 'json',
-        method : "GET",
-        success: function(response){
-            response.forEach(element => {
-                const tr = document.createElement("tr");
-                const td = document.createElement("td");
-                td.innerHTML = element.iddokter;
-                tr.appendChild(td);
-                const td2 = document.createElement("td");
-                td2.innerHTML = element.namadokter;
-                tr.appendChild(td2);
-                const td3 = document.createElement("td");
-                td3.innerHTML = "<a href='Pasien/editP' class='btn btn-warning'>Edit</a><a href='Pasien/deleteP/' onclick='return confirm('Data ini akan dihapus. Anda yakin?')' class='btn btn-danger'>Hapus</a>";
-                tr.appendChild(td3);
-
-                document.getElementById("Dokter").appendChild(tr);
-            })}
-    })})
-</script> -->
-<script>
-  $(document).ready(function() {
-    $('#tabeldokter').DataTable({
-      "scrollX": true
-    });
-  })
-</script>
+						</table>
+					</div>
+          </section>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js" integrity="sha512-QSkVNOCYLtj73J4hbmVoOV6KVZuMluZlioC+trLpewV8qMjsWqlIQvkn1KGX2StWvPMdWGBqim1xlC8krl1EKQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+  <script type="text/javascript">
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var chart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: [
+          <?php
+            if (count($chartDokter)>0) {
+              foreach ($chartDokter as $data) {
+                echo "'" .$data->namadokter ."',";
+              }
+            }
+          ?>
+        ],
+        datasets: [{
+            label: 'Jumlah Dokter',
+            backgroundColor: ['#b91d47', '#00aba9', '#2b5797'],
+            // borderColor: '##93C3D2',
+            data: [
+              <?php
+                if (count($chartDokter)>0) {
+                   foreach ($chartDokter as $data2) {
+                    echo $data2->jumlahdokter . ", ";
+                  }
+                }
+              ?>
+            ]
+        }]
+    },
+});
+ 
+  </script>
